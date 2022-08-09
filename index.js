@@ -24,9 +24,7 @@ const crearCarrito = () =>{
 }
 
 
-// alert("atencion usted debe ingresar al menos 1 producto!");
-
-
+alert("atencion usted debe ingresar al menos 1 producto!");
 
 do {
     crearProducto();
@@ -37,14 +35,13 @@ productos.forEach(producto => {
     console.table(producto);
    });
 
-debugger
 do {
     crearCarrito();
-    confirmacion = confirm ("Desea agregar otro producto al carrito")
+    confirmacion = confirm ("Desea agregar otro producto al carrito?")
 } while(confirmacion){
     carrito.forEach(producto => {
         console.table(producto);
-        total =+ producto.precioConIva();
+        total = total + producto.precioConIva();
     });
     console.warn(`El total a pagar es de: ${total}`)
 }
