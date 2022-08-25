@@ -20,7 +20,7 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="css/styles.css">
-    <script defer src="variables.js"></script>
+    <script defer src="JS/variables.js"></script>
     <script defer src="index.js"></script>
     <title>Home - E-Comerce</title>
   </head>
@@ -50,40 +50,7 @@
                   >Productos</a
                 >
               </li>
-              <li class="nav-item">
-                <a class="nav-link text-light" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle text-light"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-outline-light" type="submit">
-                Search
-              </button>
-            </form>
           </div>
         </div>
       </nav>
@@ -96,20 +63,23 @@
         </div>
         <div class="mb-3 col-5">
           <label class="form-label">Nombre del producto</label>
-          <input id="obtener-nombre" type="text" class="form-control">
+          <input id="obtener-nombre" type="text" class="form-control" disabled>
         </div>
         <div class="mb-3 col-5">
           <label class="form-label">Descripcion</label>
-          <input id="obtener-descripcion" type="text" class="form-control">
+          <input id="obtener-descripcion" type="text" class="form-control" disabled>
         </div>
         <div class="mb-3 col-5">
           <label  class="form-label">Precio</label>
-          <input id="obtener-precio" type="number" placeholder="0" class="form-control">
+          <input id="obtener-precio" type="number" placeholder="0" class="form-control" disabled>
         </div>
         <div class="mb-3 col-5 d-flex justify-content-evenly">
           <button id="btn-nuevo-producto" type="button" class="btn btn-primary col-5">Nuevo Producto</button>
           <button id="btn-agregar" type="submit" class="btn btn-success col-5">Agregar</button>
         </div>
+        <button id="btn-eliminar-producto" class="mb-3 col-4 btn btn-danger" type="button">
+          Eliminar Producto
+        </button>
       </form>
     </main>
     <footer></footer>
