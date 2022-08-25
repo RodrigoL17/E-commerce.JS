@@ -48,27 +48,30 @@ const recuperarDeLS = () =>{
 }
 
 
-// const botonEP = () => {
-//   if(flag1 === true){
-//     btnEP.addEventListener("click", funcionalidadEP);
-//   }
-//   if(flag1 === false){
-//     btnEP.addEventListener("click", removerProducto (codigo.value));
-//     flag1 = true;
-//   }
-// }
+const botonEP = () => {
+  if(flag1 === true && btnEP){
+    btnEP.addEventListener("click", funcionalidadEP);
+  }
+  if(flag1 === false && btnEP){
+    btnEP.addEventListener("click", removerProducto (codigo.value));
+  }
+}
 
-// const removerProducto = (codigo) => {
-//   productos.forEach
-// }
+const removerProducto = (codigo) => {
+ let index = productos.findIndex(producto => producto.id === codigo);
+ productos.splice(index,1)
+ flag1 = true;
+ console.log("remover");
+}
 
-// const funcionalidadEP = () => {
-//   codigo.disabled = false;
-//   codigo.focus();
-//   flag1 = false
-// }
+const funcionalidadEP = () => {
+  codigo.disabled = false;
+  codigo.focus();
+  flag1 = false
+  console.log("pedo");
+}
 
-// botonEP();
+botonEP();
 
 
 
