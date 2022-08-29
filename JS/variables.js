@@ -1,5 +1,6 @@
 const productos = [];
-let carrito = JSON.parse(localStorage.getItem("carrito")) || []
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+let busqueda = JSON.parse(sessionStorage.getItem("busqueda")) || [];
 const IVA = 1.21;
 
 let confirmacion;
@@ -18,4 +19,9 @@ const listaProductos = document.querySelector("#lista-productos")
 const btnEP = document.getElementById("btn-eliminar-producto");
 const btnNuevoProducto = document.querySelector("#btn-nuevo-producto");
 const btnAgregar = document.querySelector("#btn-agregar");
+const barraBuscar = document.querySelector(".barra-busqueda");
+const btnBuscar = document.querySelector(".btn-buscar");
+const btnFinalizarCompra = document.querySelector(".finalizar-compra")
+
+const cuerpoModal = document.querySelector(".modal-body");
 

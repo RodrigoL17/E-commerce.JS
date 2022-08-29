@@ -1,9 +1,14 @@
+// Renderizado de Productos
+
 const listarProductos = () => {
   if (!listaProductos) {
     return null;
   }
   listaProductos.innerHTML = "";
+  const texto = barraBuscar.value.toLocaleLowerCase();
   productos.forEach((producto) => {
+    let nombre = producto.nombre.toLocaleLowerCase();
+    if (nombre.indexOf(texto) !== -1){
     listaProductos.innerHTML += `<div class="card" style="width: 14rem">
                                       <img src="..." class="card-img-top" alt="..." />
                                       <div class="card-body">
@@ -22,9 +27,17 @@ const listarProductos = () => {
                                         <button id="btn-AAC-${producto.id}" class="btn btn-outline-dark" type="button">Agregar al carrito</button>
                                       </div>
                                     </div>`;
-  });
+                                  }});
+  if (listaProductos.innerHTML === ``){
+    listaProductos.innerHTML += `<div class="div-no-encontrado">
+                                  <i class="bi bi-emoji-frown-fill"></i>
+                                  <p class="p-productos">Lo sentimos... No hemos encotrado ese producto</p>
+                                </div>`
+  }
   funcionalidadBtnAAC();
 };
+
+//Boton Agregar al Carrito
 
 function funcionalidadBtnAAC() {
   productos.forEach((producto) => {
@@ -56,18 +69,18 @@ function agregarAlCArrito(producto) {
 const carritoDiv = document.querySelector(".carrito");
 const carritoIcono = document.querySelector(".icono-carrito")
 
+//Renderizado del Carrito
 
 function crearCarrito() {
   carritoDiv.innerHTML = "";
   carrito.forEach((producto) => {
-    carritoDiv.innerHTML += ` <ul class="d-flex  carrito-item dropdown-item">
+    carritoDiv.innerHTML += ` <ul class="carrito-item dropdown-item">
                                 <button class="btn eliminar-producto${producto.id} danger" type="button dropdown-item"><i class="bi bi-x-circle-fill text-danger"></i></button></li>
                                 <li class="dropdown-item">cod: ${producto.id}</li>
                                 <li class="dropdown-item">${producto.nombre}</li>
                                 <li class="dropdown-item"> <button class="btn btn-sumar${producto.id}" type="button"><i class="bi bi-plus-circle-fill text-info"></i></button> cant: ${producto.cantidad} <button class="btn btn-restar${producto.id}" type="button"><i class="bi bi-dash-circle-fill text-info"></i></button></li>
                                 <li class="dropdown-item">$ ${producto.total}</li>
-                              </ul>
-                                <hr class="dropdown-divider" />`;
+                              </ul>`;
                               });
                               localStorage.setItem("carrito", JSON.stringify(carrito));
   crearBtnFinCompra();                            
@@ -75,13 +88,18 @@ function crearCarrito() {
   funcionalidadBtnSumar();
   funcionalidadBtnRestar();
   notificacionCarrito();
+  renderizarModal();
 }
 
+//Botones del carrito y badge
+
 function crearBtnFinCompra(){
-  if (carrito !== []){
-    carritoDiv.innerHTML += ` <button class="btn btn-success finalizar-compra" type="btn">
+  if (carrito.length){
+    carritoDiv.innerHTML += ` <button class="btn btn-success finalizar-compra" data-bs-toggle="modal" data-bs-target="#Modal" type="btn">
                                 Finalizar Compra
                               </button>`
+  }else{
+    carritoDiv.innerHTML += `<p>No hay productos en el carrito</p>`
   }
 }
 
@@ -135,11 +153,7 @@ function eliminarProducto() {
   });
 }
 
-
-listarProductos();
-crearCarrito();
-
-
+//badge carrito
 
 function notificacionCarrito (){
   let acumulador = 0;
@@ -150,8 +164,46 @@ function notificacionCarrito (){
     carritoIcono.innerHTML = ``
   }else{
     carritoIcono.innerHTML = `<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">${acumulador}
-                                <span class="visually-hidden">unread messages</span>
                               </span>`
   }
   
 }
+
+listarProductos();
+crearCarrito();
+
+//Barra de busqueda
+
+btnBuscar.addEventListener("click",listarProductos);
+barraBuscar.addEventListener("keyup", listarProductos);
+
+//Finalizar Compra
+
+
+
+//modal
+
+
+
+function renderizarModal  () {
+  cuerpoModal.innerHTML =``
+  carrito.forEach(producto =>{
+    cuerpoModal.innerHTML += `<ul class="ul-fin-compra">
+                                <img src="" alt="">
+                                <li>${producto.nombre}</li>
+                                <li>${producto.cantidad}</li>
+                                <li>$${producto.total}</li>
+                              </ul>`
+  });
+  let totalAPagar = carrito.reduce((acc,producto) => {return parseInt(acc) + parseInt(producto.total)},0);
+  cuerpoModal.innerHTML += `<p>Total a pagar: $${totalAPagar}</p>`;
+}
+
+
+
+
+
+
+//toast informativo no existe producto
+// noExisteProducto =
+

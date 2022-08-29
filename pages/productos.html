@@ -35,7 +35,7 @@
       <nav class="navbar navbar-expand-lg text-bg-dark p-3">
         <div class="container-fluid">
           <div class="a-index">
-            <a class="navbar-brand text-success" href="../index.html">Navbar</a>
+            <a class="navbar-brand text-success" href="../index.html">TiendaOnline</a>
           </div>
           <div class="div-responsive">
             <button
@@ -49,13 +49,7 @@
             >
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <a
-                  class="nav-link active text-light"
-                  aria-current="page"
-                  href=""
-                  >Productos</a
-                  >
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">                 
                 <div class="nav-item dropdown">
                   <button
                   class="btn btn-secondary dropdown-toggle boton-carrito" type="button" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
@@ -68,13 +62,13 @@
                 </div>
                 <form class="d-flex" role="search">
                   <input
-                  class="form-control me-2"
+                  class="form-control me-2 barra-busqueda"
                   type="search"
-                  placeholder="Search"
+                  placeholder="Busca un Producto"
                   aria-label="Search"
                   />
-                  <button class="btn btn-outline-light" type="submit">
-                    Search
+                  <button class="btn btn-outline-light btn-buscar" type="button">
+                    Buscar
                   </button>
                 </form>
             </div>
@@ -87,9 +81,28 @@
       <section id="lista-productos">
 
       </section>
+      <!--Modal-->
+      <div class="modal fade" id="Modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Tu Compra</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+              <button type="button" class="btn btn-primary">Ir a Pagar</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <footer>
         
     </footer>
   </body>
 </html>
+

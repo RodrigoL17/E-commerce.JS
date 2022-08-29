@@ -33,6 +33,12 @@ div .card-body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+}
+
+.dropdown-menu.show p{
+    color: rgb(177, 177, 175);
+    margin-bottom: 0;
 }
 .navbar-collapse{
     display: flex;
@@ -66,9 +72,6 @@ div .card-body {
     box-shadow: 0.2rem 0.2em;
 }
 
-.carrito-item{
-
-}
 
 .dropdown-item{
     display: flex;
@@ -77,6 +80,34 @@ div .card-body {
     text-align: center;
 }
 
+.div-no-encontrado{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.div-no-encontrado .bi-emoji-frown-fill{
+    font-size: 4rem;
+    color:rgb(177, 177, 175) ;
+}
 
+.p-productos{
+    color: rgb(177, 177, 175);
+    font-size: 2rem;
+}
 
+.ul-fin-compra{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+}
+
+.modal-body p{
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
