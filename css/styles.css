@@ -111,3 +111,7 @@ div .card-body {
     font-size: 1.5rem;
     font-weight: bold;
 }
+
+.modal-body p span{
+    color: green;
+}
