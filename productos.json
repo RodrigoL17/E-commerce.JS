@@ -1,0 +1,44 @@
+[
+    {
+        "id": "4939",
+        "nombre": "Pala",
+        "descripcion": "ancha",
+        "precio": "700"
+    },
+    {
+        "id": "2675",
+        "nombre": "Martillo",
+        "descripcion": "de goma",
+        "precio": "400"
+    },
+    {
+        "id": "6728",
+        "nombre": "Rodillo",
+        "descripcion": "Pelo largo",
+        "precio": "450"
+    },
+    {
+        "id": "5497",
+        "nombre": "Estanteria",
+        "descripcion": "metalica",
+        "precio": "500"
+    },
+    {
+        "id": "7394",
+        "nombre": "Espatula",
+        "descripcion": "durlock",
+        "precio": "200"
+    },
+    {
+        "id": "838",
+        "nombre": "Escalera",
+        "descripcion": "de madera",
+        "precio": "800"
+    },
+    {
+        "id": "1259",
+        "nombre": "Clavos",
+        "descripcion": "1\"",
+        "precio": "25"
+    }
+]

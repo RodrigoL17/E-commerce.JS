@@ -5,10 +5,6 @@ class Producto {
     this.descripcion = descripcion;
     this.precio = precio;
   }
-
-  precioConIva() {
-    return parseFloat((this.precio * IVA).toFixed(2));
-  }
 }
 
 const creoId = () => parseInt(Math.random() * 10000);
@@ -25,40 +21,52 @@ const nuevoProducto = () => {
   nombre.focus();
 };
 
+const reiniciarCampos = () => {
+  codigo.disabled = true;
+  codigo.value = ""
+  nombre.disabled = true;
+  nombre.value = "";
+  descripcion.disabled = true;
+  descripcion.value = "";
+  precio.disabled = true;
+  precio.value = 0;
+}
+
 const guardarProductos = () => {
   if (nombre.value !== "" && descripcion.value !== "" && precio.value > 0) {
     productos.push(
       new Producto(codigo.value, nombre.value, descripcion.value, precio.value)
       );
-      confirmacionGuardado();
       localStorage.setItem("productos", JSON.stringify(productos));
+      confirmacionGuardado();
+      reiniciarCampos();
     } else {
       infoCampos();
     }
   };
   
-  btnNuevoProducto && btnNuevoProducto.addEventListener("click", nuevoProducto);
   
-  btnAgregar && btnAgregar.addEventListener("click", guardarProductos);
+  const recuperarDeLS = async () => {
+    // await fetch ("productos.json")
+    //       .then((response) => response.json())
+    //       .then((data) => console.log("data"))
+    // if (localStorage.productos) {
+    //   const prodGuardados = JSON.parse(localStorage.getItem("productos"));
+    //   prodGuardados.forEach((prod) => {
+    //     productos.push(prod);
+    //   });
+    // }
+  };
   
-  const recuperarDeLS = () => {
-    if (localStorage.productos) {
-      const prodGuardados = JSON.parse(localStorage.getItem("productos"));
-      prodGuardados.forEach((prod) => {
-        productos.push(prod);
-    });
-  }
-};
-
-const funcionalidadEP = () => {
-  if (btnEP && flag1 === true) {
-    codigo.disabled = false;
-    codigo.focus();
-    flag1 = false;
-  } else {
-    let index = productos.findIndex((producto) => producto.id === codigo.value);
-    if(codigo.value !== "" && index !== -1){
-    productos.splice(index, 1);
+  const funcionalidadEP = () => {
+    if (btnEP && flag1 === true) {
+      codigo.disabled = false;
+      codigo.focus();
+      flag1 = false;
+    } else {
+      let index = productos.findIndex((producto) => producto.id === codigo.value);
+      if(codigo.value !== "" && index !== -1){
+        productos.splice(index, 1);
     localStorage.setItem("productos", JSON.stringify(productos));
     flag1 = true;
     productoEliminiado();
@@ -79,7 +87,7 @@ function confirmacionGuardado(){
     toast: true,
     position: 'top-end',
     icon: 'success',
-    title: 'El producto ha si guardado correctamente',
+    title: 'El producto ha sido guardado correctamente',
     showConfirmButton: false,
     timer: 2000
   })
@@ -119,5 +127,10 @@ function ingresoErroneo (){
   codigo.disabled = true;
 }
 
+
+
 recuperarDeLS();
 
+btnNuevoProducto && btnNuevoProducto.addEventListener("click", nuevoProducto);
+
+btnAgregar && btnAgregar.addEventListener("click", guardarProductos);
