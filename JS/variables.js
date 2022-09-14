@@ -1,4 +1,4 @@
-const productos = [];
+let productos = [];
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 let busqueda = JSON.parse(sessionStorage.getItem("busqueda")) || [];
 const IVA = 1.21;

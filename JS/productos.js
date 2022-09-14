@@ -1,40 +1,35 @@
-const peticionFetch = async () =>{ 
-  const response = await fetch("./prodcutos.json")
-  const data = await response.json();
-  return data
-}
-// Renderizado de Productos
 
-const listarProductos = () => {
-  listaProductos.innerHTML = "";
+// Renderizado de Productos
+const listarProductos = async () => {
   const texto = barraBuscar.value.toLocaleLowerCase();
+  listaProductos.innerHTML = "";
   try{
-    console.log(peticionFetch())
-    productos.push(peticionFetch())
+    productos = await recuperarProds();
     productos.forEach((producto) => {
       let nombre = producto.nombre.toLocaleLowerCase();
-      if (nombre.indexOf(texto) !== -1){
-      listaProductos.innerHTML += `<div class="card" style="width: 14rem">
-                                        <img src="..." class="card-img-top" alt="..." />
-                                        <div class="card-body">
-                                          <h4 class="card-title producto-id">
-                                            Codigo: ${producto.id}
-                                          </h4>
-                                          <h5 class="card-title producto-nombre">
-                                            ${producto.nombre}
-                                          </h5>
-                                          <p class="card-text producto-descripcion">
-                                            ${producto.descripcion}
-                                          </p>
-                                          <h5 class="card-title producto-precio">
-                                            $${producto.precio}
-                                          </h5>
-                                          <button id="btn-AAC-${producto.id}" class="btn btn-outline-dark" type="button">Agregar al carrito</button>
-                                        </div>
-                                      </div>`;
-                                    }})
+    if (nombre.indexOf(texto) !== -1){
+    listaProductos.innerHTML += `<div class="card" style="width: 14rem">
+                                      <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}" />
+                                      <div class="card-body"
+                                        <h4 class="card-title producto-id">
+                                          Codigo: ${producto.id}
+                                        </h4>
+                                        <h5 class="card-title producto-nombre">
+                                          ${producto.nombre}
+                                        </h5>
+                                        <p class="card-text producto-descripcion">
+                                          ${producto.descripcion}
+                                        </p>
+                                        <h5 class="card-title producto-precio">
+                                          $${producto.precio}
+                                        </h5>
+                                        <button id="btn-AAC-${producto.id}" class="btn btn-outline-dark" type="button">Agregar al carrito</button>
+                                      </div>
+                                    </div>`;
+                                  }});
   }
   catch(error){
+    console.error("error: ", error)
     if (listaProductos.innerHTML === ``){
       listaProductos.innerHTML += `<div class="div-no-encontrado">
                                     <i class="bi bi-emoji-frown-fill"></i>
@@ -207,11 +202,22 @@ function renderizarModal  () {
   cuerpoModal.innerHTML += `<p>Total a pagar: $${totalAPagar}</p>`;
 }
 
-//Fetch
+const btnPagar = document.querySelector(".pagar");
 
+btnPagar && btnPagar.addEventListener("click", vaciarCarrito)
 
+function vaciarCarrito (){
+  carrito = []
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  Swal.fire({
+    icon: "success",
+    title: "Tu compra se ha realizado con exito",
+    showConfirmButton: false,
+    timer: 2000,
+  });
+  const recarga = setTimeout(recargar,2000)
+}
 
-
-//toast informativo no existe producto
-// noExisteProducto =
-
+function recargar (){
+  window.location.reload()
+}

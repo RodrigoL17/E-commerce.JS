@@ -1,44 +1,51 @@
 [
     {
         "id": "4939",
+        "imagen": "/img/1.jpg",
         "nombre": "Pala",
         "descripcion": "ancha",
         "precio": "700"
     },
     {
         "id": "2675",
+        "imagen": "/img/2.jpg",
         "nombre": "Martillo",
         "descripcion": "de goma",
         "precio": "400"
     },
     {
         "id": "6728",
+        "imagen": "/img/3.jpg",
         "nombre": "Rodillo",
         "descripcion": "Pelo largo",
         "precio": "450"
     },
     {
         "id": "5497",
+        "imagen": "/img/4.jpg",
         "nombre": "Estanteria",
         "descripcion": "metalica",
         "precio": "500"
     },
     {
         "id": "7394",
+        "imagen": "/img/5.jpg",
         "nombre": "Espatula",
         "descripcion": "durlock",
         "precio": "200"
     },
     {
         "id": "838",
+        "imagen": "/img/6.jpg",
         "nombre": "Escalera",
         "descripcion": "de madera",
         "precio": "800"
     },
     {
         "id": "1259",
+        "imagen": "/img/7.jpg",
         "nombre": "Clavos",
-        "descripcion": "1\"",
+        "descripcion": "1'",
         "precio": "25"
     }
 ]

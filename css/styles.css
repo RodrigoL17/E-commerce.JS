@@ -3,6 +3,14 @@ margin: 0;
 box-sizing: border-box;
 }
 
+.card-img-top{
+    max-width: 14rem;
+    max-height: 14rem;
+    min-height: 14rem;
+    min-width: 14rem;
+    padding: 1rem;
+}
+
 .container{
     display: flex;
     flex-direction: column;
